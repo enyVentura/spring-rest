@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+</head>
+<body>
+
+<div>
+    <form action="/admin" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="submit" value="Back to admin"/>
+    </form>
+</div>
+
+<form th:method="PATCH" th:action="@{/{id}(id=${user.getId()})}" th:object="${user}">
+    <label for="username">UserName:</label>
+    <input type="text" th:field="*{username}" id="username">
+    <br/>
+
+    <label for="firstName">First Name:</label>
+    <input type="text" th:field="*{firstName}" id="firstName">
+    <br/>
+
+    <label for="lastName">Last Name</label>
+    <input type="text" th:field="*{lastName}" id="lastName">
+    <br/>
+
+    <label for="password">Password:</label>
+    <input type="text" th:field="*{password}" id="password">
+    <br/>
+
+    <label>Role:
+        <select multiple size="2" name="select_roles" class="form-control" id="exampleFormControlSelect3">
+            <option th:each="role : ${allRoles}" th:value="${role.getName()}"
+                    th:text="${role.getAuthority() == 'ROLE_ADMIN'} ? 'ROLE_ADMIN' : 'ROLE_USER'"></option>
+        </select>
+        <br/>
+    </label>
+
+    <input type="submit" value="Update"/>
+</form>
+</body>
+</html>
