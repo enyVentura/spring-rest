@@ -6,18 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring_boot" />
+        <module name="spring_bootstrap" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring-security" target="8" />
-      <module name="spring_boot" target="15" />
+      <module name="spring_bootstrap" target="15" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-security" options="-parameters" />
-      <module name="spring_boot" options="-parameters" />
+      <module name="spring_bootstrap" options="-parameters" />
     </option>
   </component>
 </project>

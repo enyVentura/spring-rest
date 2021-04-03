@@ -25,7 +25,7 @@ public class UserService implements UserDetailsService {
 
     private UserRepository userRepository;
     private RoleRepository roleRepository;
-    private BCryptPasswordEncoder cryptPasswordEncoder;
+    BCryptPasswordEncoder cryptPasswordEncoder;
 
     @Autowired
     public void setCryptPasswordEncoder(BCryptPasswordEncoder cryptPasswordEncoder) {
@@ -98,7 +98,6 @@ public class UserService implements UserDetailsService {
         user.setPassword(cryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
-
 
     public void deleteById(Integer userId) {
         userRepository.deleteById(userId);

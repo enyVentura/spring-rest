@@ -38,6 +38,15 @@ public class User implements UserDetails {
     public User() {
     }
 
+    public User(Integer id, String username, String firstName, String lastName, String password, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -111,6 +120,18 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 
 }
