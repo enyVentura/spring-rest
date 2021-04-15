@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import web.model.Role;
 import web.model.User;
 import web.repository.RoleRepository;
@@ -64,9 +65,9 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public List<User> findAll() {
+   /* public List<User> findAll() {
         return userRepository.findAll();
-    }
+    }*/
 
 
     public User findById(Integer id) {
@@ -101,6 +102,17 @@ public class UserService implements UserDetailsService {
 
     public void deleteById(Integer userId) {
         userRepository.deleteById(userId);
+    }
+
+
+    public List<User> allUsers() {
+        return new ArrayList<>(userRepository.findAll());
+    }
+
+
+    public void saveUser(User user) {
+        user.setPassword(cryptPasswordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
     }
 
 }
